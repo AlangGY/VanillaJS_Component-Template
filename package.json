@@ -2,8 +2,11 @@
   "name": "vanillajs_component-template",
   "version": "1.0.0",
   "description": "Repository for component pattern template",
-  "main": "index.js",
-  "scripts": {},
+  "private": true,
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack serve --open"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AlangGY/VanillaJS_Component-Template.git"
@@ -16,7 +19,16 @@
   },
   "homepage": "https://github.com/AlangGY/VanillaJS_Component-Template#readme",
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "css-loader": "^6.6.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "fork-ts-checker-webpack-plugin": "^7.2.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.5.3",
+    "ts-loader": "^9.2.7",
+    "typescript": "^4.6.2",
+    "webpack": "^5.69.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
   },
   "config": {
     "commitizen": {
