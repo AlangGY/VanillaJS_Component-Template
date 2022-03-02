@@ -21,8 +21,7 @@ class Component<
   _id: number;
   $target: T;
   $node: N;
-  $props: { state: S };
-  $className: string;
+  $props: { state: S; className?: string };
   $children: Node[];
 
   constructor({
@@ -31,7 +30,6 @@ class Component<
     className,
   }: ComponentConstructor<T, S>) {
     this.$target = $target;
-    this.$className = className;
     this.$props = new Proxy(
       { state: { ...initialState }, className },
       {
