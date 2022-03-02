@@ -1,0 +1,26 @@
+{
+  "name": "vanillajs_component-template",
+  "version": "1.0.0",
+  "description": "Repository for component pattern template",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlangGY/VanillaJS_Component-Template.git"
+  },
+  "keywords": [],
+  "author": "AlangGY",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlangGY/VanillaJS_Component-Template/issues"
+  },
+  "homepage": "https://github.com/AlangGY/VanillaJS_Component-Template#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
