@@ -1,5 +1,6 @@
+import App from "./app";
 import "./css/styles.css";
 
 const $app = document.querySelector("#app");
 
-$app.innerHTML = "Hello! It's Alang Component";
+new App({ $target: $app }).mount();
