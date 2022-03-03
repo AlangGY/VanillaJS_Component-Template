@@ -1,23 +1,16 @@
-interface ComponentConstructor<
-  T extends HTMLElement,
-  S extends { [value: string | symbol]: any }
-> {
-  $target: T;
-  initialState?: S;
-  className?: string;
-  display?: boolean;
-}
+import { ComponentConstructor } from "../@types/ComponentConstructor.type";
+
 class Component<
   /* 
   T : $target type
   S : $node type
   S : state type
 */
-  T extends HTMLElement = HTMLElement,
-  N extends HTMLElement = HTMLElement,
   S extends { [value: string | symbol]: any } = {
     [value: string | symbol]: any;
-  }
+  },
+  T extends Element = Element,
+  N extends Element = Element
 > {
   _id: number;
   $target: T;
@@ -30,7 +23,7 @@ class Component<
     initialState,
     className,
     display = true,
-  }: ComponentConstructor<T, S>) {
+  }: ComponentConstructor<S, T>) {
     this.$target = $target;
     this.$props = new Proxy(
       { state: { ...initialState }, className, display },
@@ -78,9 +71,8 @@ class Component<
 
   render() {
     this.beforeRender();
-
     const template = this.template();
-    const display = this.$props.display;
+    const { display } = this.$props;
     if (!display) {
       this.$node.setAttribute("style", "display: none;");
     }
