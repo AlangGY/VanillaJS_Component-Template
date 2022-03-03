@@ -31,6 +31,9 @@ class Component<
         // state 가 아닌 다른 키값을 조회할경우, props.state 프로퍼티 객체의 key:value를 반환한다.
         // 이를 통해 this.state.state.id 조회를 this.state.id 와 같은 직관적인 형태로 참조가 가능하다.
         get: (props, key) => {
+          if (key === "className" || key === "display") {
+            return props[key];
+          }
           return key !== "state" ? props.state[key] : props.state;
         },
         // 대상 객체의 프로퍼티를 변경시, 이를 인터셉트하여 state 프로퍼티에 값을 담은 후, render() 메소드와 child 가 있다면 setChildrenState를 호출한다.
