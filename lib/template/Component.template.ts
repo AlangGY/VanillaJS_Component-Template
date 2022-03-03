@@ -1,10 +1,11 @@
 interface ComponentConstructor<
-  T extends Node,
+  T extends HTMLElement,
   S extends { [value: string | symbol]: any }
 > {
   $target: T;
   initialState?: S;
   className?: string;
+  display?: boolean;
 }
 class Component<
   /* 
@@ -12,8 +13,8 @@ class Component<
   S : $node type
   S : state type
 */
-  T extends Node = Node,
-  N extends Node = Node,
+  T extends HTMLElement = HTMLElement,
+  N extends HTMLElement = HTMLElement,
   S extends { [value: string | symbol]: any } = {
     [value: string | symbol]: any;
   }
