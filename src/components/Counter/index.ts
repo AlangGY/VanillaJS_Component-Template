@@ -25,6 +25,7 @@ class Counter extends Component<CounterState> {
   template(): string {
     const { count } = this.$props.state;
     return `
+      <h3>Counter</h3>
       ${count}
       <button class="inc">Increase</button>
       <button class="dec">Decrease</button>
