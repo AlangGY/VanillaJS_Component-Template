@@ -72,14 +72,13 @@ class Component<
   afterRender() {}
 
   render() {
+    // render 이전에, beforeRender 메소드 호출
     this.beforeRender();
     const template = this.template();
     const { display } = this.$props;
     if (!display) {
       this.$node.setAttribute("style", "display: none;");
     }
-    // render 이전에, 수행할 메소드 실행
-    this.beforeRender();
     // 만약 template이 존재하지 않으면, render 할 필요가 없다. (child의 경우는 proxy의 setter로 인해 각자의 render 메서드가 호출된다.)
     if (!template) return;
 
@@ -93,6 +92,7 @@ class Component<
     // innerHTML 갱신이 완료된후, children 들을 mount 시킨다.
     this.$children?.map((ChildComponent) => ChildComponent.mount());
 
+    // render 이후, afterRender 메소드 호출
     this.afterRender();
   }
 
@@ -115,16 +115,22 @@ class Component<
     return this;
   }
 
+  beforeMount() {}
+
   mount() {
     this.$children?.forEach((ChildComponent) => ChildComponent.mount());
     this.setEvent();
     this.render();
+    this.beforeMount();
     this.$node && this.$target.appendChild(this.$node);
 
     return this;
   }
 
+  beforeUnMount() {}
+
   unMount() {
+    this.beforeUnMount();
     this.clearEvent();
     this.$node && this.$target.removeChild(this.$node);
     return this;
