@@ -1,8 +1,7 @@
 export interface ComponentConstructor<
-  S extends { [value: string | symbol]: any },
-  T extends Element = Element
+  S extends { [value: string | symbol]: any }
 > {
-  $target: T;
+  $target: Element;
   initialState?: S;
   className?: string;
   display?: boolean;

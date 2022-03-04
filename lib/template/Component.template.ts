@@ -9,11 +9,10 @@ class Component<
   S extends { [value: string | symbol]: any } = {
     [value: string | symbol]: any;
   },
-  T extends Element = Element,
   N extends Element = Element
 > {
   _id: number;
-  $target: T;
+  $target: Element;
   $node: N;
   $props: { state: S; className?: string; display?: boolean };
   $children?: Component[];
@@ -23,7 +22,7 @@ class Component<
     initialState,
     className,
     display = true,
-  }: ComponentConstructor<S, T>) {
+  }: ComponentConstructor<S>) {
     this.$target = $target;
     this.$props = new Proxy(
       { state: { ...initialState }, className, display },
